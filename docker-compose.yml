@@ -1,0 +1,43 @@
+version: "3.1"
+services:
+  angular-app:
+    build: ./angular-app
+    command: ["npm", "start"]
+    volumes:
+      - ./angular-app:/var/www/html
+      - /var/www/html/node_modules
+    networks:
+      - net
+    ports:
+      - 80:4200
+    environment:
+      - LISTEN_ADDRESS=0.0.0.0
+      - LISTEN_PORT=4200
+      - NODE_ENV=development
+
+  node-app:
+    build: ./node-app
+    command: ["npm", "start"]
+    volumes:
+      - ./node-app:/var/www/html
+      - /var/www/html/node_modules
+    networks:
+      - net
+    ports:
+      - 3000:3000
+    environment:
+      - LISTEN_ADDRESS=0.0.0.0
+      - LISTEN_PORT=3000
+      - NODE_ENV=development
+      - MYSQL_DB_HOST=host.domain.tld
+      - MYSQL_DB_USER=root
+      - MYSQL_DB_PASS=
+      - MYSQL_DB_NAME=dbname
+
+networks:
+  net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.0.0/24

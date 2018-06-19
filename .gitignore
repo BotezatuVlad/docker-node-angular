@@ -1,0 +1,29 @@
+# angular app
+angular-app/dist
+angular-app/uploads
+angular-app/node_modules
+angular-app/e2e
+angular-app/typings
+angular-app/.vscode
+angular-app/npm-debug.log
+angular-app/.config
+
+
+# node app
+node-app/node_modules
+node-app/npm-debug.log
+node-app/typings
+node-app/.vscode
+node-app/.config
+
+
+# root level
+.vscode/
+.config/
+.npm/
+
+
+# global
+.DS_Store
+Thumbs.db
+*.log
